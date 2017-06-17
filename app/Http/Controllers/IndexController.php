@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Models\YunbiApi;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        return view("data", ["yunbi" => "hua"]);
+        $yunbiData = (new YunbiApi())->tickers();
+
+        return view("data", ["yunbi" => $yunbiData]);
     }   
 }
